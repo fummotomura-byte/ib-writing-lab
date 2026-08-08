@@ -920,29 +920,6 @@ function saveSelfAssessment() {
         "assessmentStatus"
     ).style.display = "block";
 
-}
-    const good =
-        document.getElementById("reflectionGood").value;
-
-    const improve =
-        document.getElementById("reflectionImprove").value;
-
-    localStorage.setItem(
-        "ibReflection",
-        JSON.stringify({
-            good: good,
-            improve: improve
-        })
-    );
-
-    const status =
-        document.getElementById("reflectionStatus");
-
-    status.style.display = "block";
-
-    setTimeout(() => {
-        status.style.display = "none";
-    }, 2000);
 
 }
 
