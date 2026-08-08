@@ -253,7 +253,72 @@ footer {
     </div>
 
     <div class="card">
+<div class="card">
 
+    <h2>✍️ IB English B Writing Practice</h2>
+
+    <label>
+        Choose a writing task
+    </label>
+
+    <select id="taskSelect"
+            onchange="changeTask()">
+
+        <option value="blog">
+            Blog Post
+        </option>
+
+        <option value="email">
+            Email
+        </option>
+
+        <option value="article">
+            Article
+        </option>
+
+        <option value="proposal">
+            Proposal
+        </option>
+
+        <option value="speech">
+            Speech
+        </option>
+
+    </select>
+
+    <div id="taskBox"
+         class="task-box">
+    </div>
+
+    <h3>Your Writing</h3>
+
+    <textarea
+        id="writingArea"
+        placeholder="Start writing here...">
+    </textarea>
+
+    <div class="wordcount">
+        Words: <span id="wordCount">0</span>
+    </div>
+
+    <br>
+
+    <button class="primary"
+            onclick="saveWriting()">
+        💾 Save Draft
+    </button>
+
+    <button class="secondary"
+            onclick="savePortfolio()">
+        📁 Save to Portfolio
+    </button>
+
+    <div id="saveStatus"
+         class="status">
+        Saved successfully!
+    </div>
+
+</div>
         <h2>Learning Journey</h2>
 
         <span class="badge">Writing</span>
