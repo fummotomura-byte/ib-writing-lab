@@ -310,7 +310,77 @@ footer {
         <h3>Your Writing</h3>
 
         <textarea
-            id="writingArea"
+         <h3>⭐ IB English B Self-Assessment</h3>
+
+<div class="card">
+
+    <p><strong>Content</strong></p>
+    <label>
+        <input type="checkbox" id="contentCheck">
+        I answered the task clearly and included relevant ideas.
+    </label>
+
+    <p><strong>Organization</strong></p>
+    <label>
+        <input type="checkbox" id="organizationCheck">
+        My ideas are organized clearly with paragraphs and linking words.
+    </label>
+
+    <p><strong>Language</strong></p>
+    <label>
+        <input type="checkbox" id="languageCheck">
+        I used appropriate vocabulary and grammar.
+    </label>
+
+    <p><strong>Communication</strong></p>
+    <label>
+        <input type="checkbox" id="communicationCheck">
+        My writing is appropriate for the audience and purpose.
+    </label>
+
+</div>
+
+<h3>📝 My Reflection</h3>
+
+<label>
+    What did I do well?
+</label>
+
+<textarea
+    id="myStrengths"
+    style="min-height:120px;"
+    placeholder="I think I did well at...">
+</textarea>
+
+<label>
+    What would I like to improve?
+</label>
+
+<textarea
+    id="myImprovement"
+    style="min-height:120px;"
+    placeholder="I would like to improve...">
+</textarea>
+
+<label>
+    What is my next goal?
+</label>
+
+<textarea
+    id="myGoal"
+    style="min-height:120px;"
+    placeholder="My next goal is to...">
+</textarea>
+
+<button class="primary"
+        onclick="saveSelfAssessment()">
+    💾 Save My Reflection
+</button>
+
+<div id="assessmentStatus"
+     class="status">
+    Your reflection has been saved!
+</div>   id="writingArea"
             placeholder="Start writing here...">
         </textarea>
 
@@ -712,7 +782,46 @@ function loadPortfolio() {
 
 
 function saveReflection() {
+function saveSelfAssessment() {
 
+    const assessment = {
+
+        content:
+            document.getElementById("contentCheck").checked,
+
+        organization:
+            document.getElementById("organizationCheck").checked,
+
+        language:
+            document.getElementById("languageCheck").checked,
+
+        communication:
+            document.getElementById("communicationCheck").checked,
+
+        strengths:
+            document.getElementById("myStrengths").value,
+
+        improvement:
+            document.getElementById("myImprovement").value,
+
+        goal:
+            document.getElementById("myGoal").value,
+
+        date:
+            new Date().toLocaleString()
+
+    };
+
+    localStorage.setItem(
+        "ibSelfAssessment",
+        JSON.stringify(assessment)
+    );
+
+    document.getElementById(
+        "assessmentStatus"
+    ).style.display = "block";
+
+}
     const good =
         document.getElementById("reflectionGood").value;
 
