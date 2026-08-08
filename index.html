@@ -371,39 +371,35 @@ footer {
         <div id="taskBox"
              class="task-box">
         </div>
+<h3>Your Writing</h3>
 
-        <h3>Your Writing</h3>
+<textarea
+    id="writingArea"
+    placeholder="Start writing here...">
+</textarea>
 
-        
-
-<div class="card">
-
-    <p><strong>Content</strong></p>
-    <label>
-        <input type="checkbox" id="contentCheck">
-        I answered the task clearly and included relevant ideas.
-    </label>
-
-    <p><strong>Organization</strong></p>
-    <label>
-        <input type="checkbox" id="organizationCheck">
-        My ideas are organized clearly with paragraphs and linking words.
-    </label>
-
-    <p><strong>Language</strong></p>
-    <label>
-        <input type="checkbox" id="languageCheck">
-        I used appropriate vocabulary and grammar.
-    </label>
-
-    <p><strong>Communication</strong></p>
-    <label>
-        <input type="checkbox" id="communicationCheck">
-        My writing is appropriate for the audience and purpose.
-    </label>
-
+<div class="wordcount">
+    Words: <span id="wordCount">0</span>
 </div>
 
+<br>
+
+<button class="primary"
+        onclick="saveWriting()">
+    💾 Save Draft
+</button>
+
+<button class="secondary"
+        onclick="savePortfolio()">
+    📁 Save to Portfolio
+</button>
+
+<div id="saveStatus"
+     class="status">
+    Saved successfully!
+</div>
+
+      
 <h3>📝 My Reflection</h3>
 
 <label>
@@ -436,17 +432,11 @@ footer {
     placeholder="My next goal is to...">
 </textarea>
 
-<button class="primary"
-        onclick="saveSelfAssessment()">
-    💾 Save My Reflection
-</button>
+<textarea
+    id="writingArea"
+    placeholder="Start writing here...">
+</textarea>
 
-<div id="assessmentStatus"
-     class="status">
-    Your reflection has been saved!
-</div>   id="writingArea"
-            placeholder="Start writing here...">
-        </textarea>
 
         <div class="wordcount">
             Words: <span id="wordCount">0</span>
