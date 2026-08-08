@@ -8,88 +8,811 @@
 
 <style>
 
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f7fb;
-    text-align:center;
+* {
+    box-sizing: border-box;
 }
 
-header{
-    background:#173F5F;
-    color:white;
-    padding:40px;
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fb;
+    color: #1d3557;
 }
 
-h1{
-    font-size:48px;
-    margin-bottom:10px;
+header {
+    background: #17466b;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
 }
 
-h2{
-    font-weight:normal;
+header h1 {
+    font-size: 48px;
+    margin: 0 0 10px;
 }
 
-.container{
-    margin:50px auto;
-    width:80%;
+header p {
+    font-size: 22px;
+    margin: 0;
 }
 
-.button{
-    display:block;
-    width:280px;
-    margin:20px auto;
-    padding:18px;
-    background:#20639B;
-    color:white;
-    text-decoration:none;
-    font-size:22px;
-    border-radius:12px;
+nav {
+    background: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 
-.button:hover{
-    background:#3CAEA3;
+nav button {
+    border: none;
+    background: #246da3;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-footer{
-    margin-top:80px;
-    color:gray;
+nav button:hover {
+    background: #17466b;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+}
+
+h2 {
+    color: #17466b;
+}
+
+h3 {
+    color: #246da3;
+}
+
+select,
+textarea,
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccd6e0;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 350px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.primary {
+    background: #246da3;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.primary:hover {
+    background: #17466b;
+}
+
+.secondary {
+    background: #e8f0f7;
+    color: #17466b;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.wordcount {
+    font-size: 18px;
+    font-weight: bold;
+    color: #246da3;
+}
+
+.task-box {
+    background: #eef6fc;
+    border-left: 5px solid #246da3;
+    padding: 20px;
+    margin: 15px 0;
+    line-height: 1.7;
+}
+
+.status {
+    padding: 12px;
+    background: #edf7ed;
+    color: #27632a;
+    border-radius: 8px;
+    display: none;
+    margin-top: 15px;
+}
+
+.vocab-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.badge {
+    display: inline-block;
+    background: #e8f0f7;
+    color: #17466b;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 4px;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 40px;
+}
+
+@media(max-width:600px) {
+
+    header h1 {
+        font-size: 34px;
+    }
+
+    header p {
+        font-size: 18px;
+    }
+
+    nav button {
+        width: 45%;
+    }
+
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-<h1>IB Writing Lab</h1>
-
-<h2>Think. Write. Reflect.</h2>
-
+    <h1>IB Writing Lab</h1>
+    <p>Think. Write. Reflect.</p>
 </header>
 
-<div class="container">
+<nav>
 
-<a class="button" href="#">Start Writing</a>
+    <button onclick="showPage('home')">Home</button>
 
-<a class="button" href="#">Vocabulary</a>
+    <button onclick="showPage('writing')">
+        ✍️ Writing
+    </button>
 
-<a class="button" href="#">Reflection</a>
+    <button onclick="showPage('vocabulary')">
+        📚 Vocabulary
+    </button>
 
-<a class="button" href="#">Portfolio</a>
+    <button onclick="showPage('reflection')">
+        📝 Reflection
+    </button>
 
-<a class="button" href="#">Teacher Dashboard</a>
+    <button onclick="showPage('portfolio')">
+        📁 Portfolio
+    </button>
 
-</div>
+    <button onclick="showPage('teacher')">
+        👩‍🏫 Teacher
+    </button>
+
+</nav>
+
+<main>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+    <div class="card">
+
+        <h2>Welcome to IB Writing Lab</h2>
+
+        <p>
+            A free writing practice space for
+            IB English B students.
+        </p>
+
+        <p>
+            Think. Write. Reflect. Build your portfolio.
+        </p>
+
+        <button class="primary"
+                onclick="showPage('writing')">
+            Start Writing
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Learning Journey</h2>
+
+        <span class="badge">Writing</span>
+        <span class="badge">Vocabulary</span>
+        <span class="badge">Reflection</span>
+        <span class="badge">Portfolio</span>
+
+    </div>
+
+</section>
+
+
+<!-- WRITING -->
+
+<section id="writing" class="page">
+
+    <div class="card">
+
+        <h2>✍️ IB English B Writing Practice</h2>
+
+        <label>
+            Choose a writing task
+        </label>
+
+        <select id="taskSelect"
+                onchange="changeTask()">
+
+            <option value="blog">
+                Blog Post
+            </option>
+
+            <option value="email">
+                Email
+            </option>
+
+            <option value="article">
+                Article
+            </option>
+
+            <option value="proposal">
+                Proposal
+            </option>
+
+            <option value="speech">
+                Speech
+            </option>
+
+        </select>
+
+        <div id="taskBox"
+             class="task-box">
+        </div>
+
+        <h3>Your Writing</h3>
+
+        <textarea
+            id="writingArea"
+            placeholder="Start writing here...">
+        </textarea>
+
+        <div class="wordcount">
+            Words: <span id="wordCount">0</span>
+        </div>
+
+        <br>
+
+        <button class="primary"
+                onclick="saveWriting()">
+            💾 Save Draft
+        </button>
+
+        <button class="secondary"
+                onclick="savePortfolio()">
+            📁 Save to Portfolio
+        </button>
+
+        <div id="saveStatus"
+             class="status">
+            Saved successfully!
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VOCABULARY -->
+
+<section id="vocabulary" class="page">
+
+    <div class="card">
+
+        <h2>📚 Vocabulary Builder</h2>
+
+        <p>
+            Useful expressions for IB English B writing.
+        </p>
+
+        <div class="vocab-item">
+            <strong>In my opinion, ...</strong>
+            <br>
+            自分の意見を述べる
+        </div>
+
+        <div class="vocab-item">
+            <strong>From my perspective, ...</strong>
+            <br>
+            自分の視点から述べる
+        </div>
+
+        <div class="vocab-item">
+            <strong>On the other hand, ...</strong>
+            <br>
+            一方で
+        </div>
+
+        <div class="vocab-item">
+            <strong>It is worth considering that ...</strong>
+            <br>
+            ～を考慮する価値がある
+        </div>
+
+        <div class="vocab-item">
+            <strong>As a result, ...</strong>
+            <br>
+            その結果
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- REFLECTION -->
+
+<section id="reflection" class="page">
+
+    <div class="card">
+
+        <h2>📝 Reflection</h2>
+
+        <p>
+            After writing, reflect on your learning.
+        </p>
+
+        <label>
+            What did you do well?
+        </label>
+
+        <textarea
+            id="reflectionGood"
+            style="min-height:150px;"
+            placeholder="I think I did well at...">
+        </textarea>
+
+        <label>
+            What would you like to improve?
+        </label>
+
+        <textarea
+            id="reflectionImprove"
+            style="min-height:150px;"
+            placeholder="Next time, I want to...">
+        </textarea>
+
+        <button class="primary"
+                onclick="saveReflection()">
+            Save Reflection
+        </button>
+
+        <div id="reflectionStatus"
+             class="status">
+            Reflection saved!
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PORTFOLIO -->
+
+<section id="portfolio" class="page">
+
+    <div class="card">
+
+        <h2>📁 My Portfolio</h2>
+
+        <p>
+            Your saved writing will appear here.
+        </p>
+
+        <div id="portfolioList">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TEACHER -->
+
+<section id="teacher" class="page">
+
+    <div class="card">
+
+        <h2>👩‍🏫 Teacher Dashboard</h2>
+
+        <p>
+            This is the first version of the
+            teacher dashboard.
+        </p>
+
+        <h3>Student Progress</h3>
+
+        <p>
+            Writing tasks completed:
+            <strong id="completedCount">0</strong>
+        </p>
+
+        <h3>Portfolio Entries</h3>
+
+        <div id="teacherPortfolio">
+        </div>
+
+    </div>
+
+</section>
+
+</main>
 
 <footer>
 
-© 2026 IB Writing Lab
+    IB Writing Lab · Free Educational Project
 
 </footer>
 
-</body>
 
+<script>
+
+const tasks = {
+
+    blog: {
+        title: "Blog Post",
+        prompt:
+        "Write a blog post for your school website about how technology can improve students' lives. Give your opinion and support it with examples. Aim for 180–250 words."
+    },
+
+    email: {
+        title: "Email",
+        prompt:
+        "Write an email to an international student who will visit your school. Introduce your school and suggest two activities they should try. Aim for 150–200 words."
+    },
+
+    article: {
+        title: "Article",
+        prompt:
+        "Write an article for a youth magazine about the importance of volunteering. Explain the benefits and give examples from your community. Aim for 180–250 words."
+    },
+
+    proposal: {
+        title: "Proposal",
+        prompt:
+        "Write a proposal to your school principal suggesting one change that could improve student wellbeing. Explain the problem and suggest practical solutions. Aim for 180–250 words."
+    },
+
+    speech: {
+        title: "Speech",
+        prompt:
+        "Write a speech for your classmates about why learning another language is valuable. Include reasons, examples and a clear conclusion. Aim for 180–250 words."
+    }
+
+};
+
+
+function showPage(pageId) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    document
+        .getElementById(pageId)
+        .classList.add("active");
+
+    if(pageId === "portfolio") {
+        loadPortfolio();
+    }
+
+    if(pageId === "teacher") {
+        loadTeacher();
+    }
+
+}
+
+
+function changeTask() {
+
+    const selected =
+        document.getElementById("taskSelect").value;
+
+    document.getElementById("taskBox").innerHTML =
+        "<strong>" +
+        tasks[selected].title +
+        "</strong><br><br>" +
+        tasks[selected].prompt;
+
+}
+
+
+function countWords(text) {
+
+    return text
+        .trim()
+        .split(/\s+/)
+        .filter(word => word.length > 0)
+        .length;
+
+}
+
+
+document
+    .getElementById("writingArea")
+    .addEventListener("input", function() {
+
+        document.getElementById("wordCount")
+            .textContent =
+            countWords(this.value);
+
+    });
+
+
+function saveWriting() {
+
+    const text =
+        document.getElementById("writingArea").value;
+
+    localStorage.setItem(
+        "ibWritingDraft",
+        text
+    );
+
+    const status =
+        document.getElementById("saveStatus");
+
+    status.style.display = "block";
+
+    setTimeout(() => {
+        status.style.display = "none";
+    }, 2000);
+
+}
+
+
+function savePortfolio() {
+
+    const text =
+        document.getElementById("writingArea").value;
+
+    const task =
+        document.getElementById("taskSelect").value;
+
+    if(!text.trim()) {
+
+        alert("Please write something first.");
+
+        return;
+
+    }
+
+    let portfolio =
+        JSON.parse(
+            localStorage.getItem("ibPortfolio")
+        ) || [];
+
+    portfolio.push({
+
+        task: tasks[task].title,
+
+        text: text,
+
+        words: countWords(text),
+
+        date: new Date().toLocaleString()
+
+    });
+
+    localStorage.setItem(
+        "ibPortfolio",
+        JSON.stringify(portfolio)
+    );
+
+    alert("Saved to Portfolio!");
+
+    loadPortfolio();
+
+}
+
+
+function loadPortfolio() {
+
+    let portfolio =
+        JSON.parse(
+            localStorage.getItem("ibPortfolio")
+        ) || [];
+
+    const container =
+        document.getElementById("portfolioList");
+
+    if(portfolio.length === 0) {
+
+        container.innerHTML =
+            "<p>No writing saved yet.</p>";
+
+        return;
+
+    }
+
+    container.innerHTML = "";
+
+    portfolio
+        .slice()
+        .reverse()
+        .forEach((item, index) => {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "card";
+
+            div.innerHTML =
+                "<h3>" +
+                item.task +
+                "</h3>" +
+
+                "<p><strong>" +
+                item.words +
+                " words</strong> · " +
+                item.date +
+                "</p>" +
+
+                "<p>" +
+                item.text
+                    .replace(/</g,"&lt;")
+                    .replace(/>/g,"&gt;")
+                +
+                "</p>";
+
+            container.appendChild(div);
+
+        });
+
+}
+
+
+function saveReflection() {
+
+    const good =
+        document.getElementById("reflectionGood").value;
+
+    const improve =
+        document.getElementById("reflectionImprove").value;
+
+    localStorage.setItem(
+        "ibReflection",
+        JSON.stringify({
+            good: good,
+            improve: improve
+        })
+    );
+
+    const status =
+        document.getElementById("reflectionStatus");
+
+    status.style.display = "block";
+
+    setTimeout(() => {
+        status.style.display = "none";
+    }, 2000);
+
+}
+
+
+function loadTeacher() {
+
+    let portfolio =
+        JSON.parse(
+            localStorage.getItem("ibPortfolio")
+        ) || [];
+
+    document.getElementById(
+        "completedCount"
+    ).textContent = portfolio.length;
+
+    const container =
+        document.getElementById("teacherPortfolio");
+
+    if(portfolio.length === 0) {
+
+        container.innerHTML =
+            "<p>No student submissions yet.</p>";
+
+        return;
+
+    }
+
+    container.innerHTML =
+        portfolio.map(item => {
+
+            return `
+                <div class="card">
+
+                    <strong>${item.task}</strong>
+
+                    <p>
+                    ${item.words} words · ${item.date}
+                    </p>
+
+                    <p>
+                    ${item.text
+                        .replace(/</g,"&lt;")
+                        .replace(/>/g,"&gt;")}
+                    </p>
+
+                </div>
+            `;
+
+        }).join("");
+
+}
+
+
+window.onload = function() {
+
+    changeTask();
+
+    const draft =
+        localStorage.getItem(
+            "ibWritingDraft"
+        );
+
+    if(draft) {
+
+        document.getElementById(
+            "writingArea"
+        ).value = draft;
+
+        document.getElementById(
+            "wordCount"
+        ).textContent =
+            countWords(draft);
+
+    }
+
+};
+
+</script>
+
+</body>
 </html>
